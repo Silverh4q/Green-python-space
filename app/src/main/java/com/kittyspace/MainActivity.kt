@@ -93,10 +93,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = BackgroundBlack
                 ) {
-                    if (showSplash) {
-                        SplashScreen(onTimeout = { showSplash = false })
-                    } else {
+                    Box(modifier = Modifier.fillMaxSize()) {
                         KittyDumperMainScreen()
+                        if (showSplash) {
+                            SplashScreen(onTimeout = { showSplash = false })
+                        }
                     }
                 }
             }
@@ -113,7 +114,8 @@ fun SplashScreen(onTimeout: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(BackgroundBlack),
+            .background(BackgroundBlack)
+            .clickable(interactionSource = remember { androidx.compose.foundation.interaction.MutableInteractionSource() }, indication = null) {},
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {

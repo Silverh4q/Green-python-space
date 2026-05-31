@@ -1,0 +1,14 @@
+tasks.register("listNdk") {
+    doLast {
+        val f = file("/opt/android/sdk/ndk")
+        if (f.exists()) {
+            println("NDK dir contains: " + f.list()?.joinToString())
+        } else {
+            println("NDK dir does not exist")
+        }
+        val f2 = file("/opt/android/sdk/ndk/27.0.12077973")
+        if (f2.exists()) {
+             println("NDK 27 contains: " + f2.list()?.joinToString())
+        }
+    }
+}
